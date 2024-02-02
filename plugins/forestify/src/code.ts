@@ -33,17 +33,17 @@ figma.ui.onmessage = (msg) => {
     );
   }
 
-  if (msg.type === "create-rectangles") {
-    const nodes: SceneNode[] = [];
-    for (let i = 0; i < msg.count; i++) {
-      const rect = figma.createRectangle();
-      rect.x = i * 150;
-      rect.fills = [{ type: "SOLID", color: { r: 1, g: 0.5, b: 0 } }];
-      figma.currentPage.appendChild(rect);
-      nodes.push(rect);
+  if (msg.type === "generate-forest") {
+    if (figma.currentPage.selection.length !== 1) {
+      figma.notify("Select a single frame to generate a forest in.");
+      return;
     }
-    figma.currentPage.selection = nodes;
-    figma.viewport.scrollAndZoomIntoView(nodes);
+
+    if (figma.currentPage.selection[0]?.type !== "FRAME") {
+      figma.notify("Selected destination must be a Frame node.");
+    }
+
+    // TODO: generate the forest!
   }
 
   // figma.closePlugin();
