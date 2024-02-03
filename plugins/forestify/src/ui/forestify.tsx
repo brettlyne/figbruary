@@ -61,7 +61,22 @@ const App = () => {
     // TODO: pass all forest settings to the plugin
 
     parent.postMessage(
-      { pluginMessage: { type: "generate-forest", trees } },
+      {
+        pluginMessage: {
+          type: "generate-forest",
+          forest: {
+            trees,
+            scalingRange,
+            layeredPaperMode,
+            density,
+            perspectiveScaling,
+            avoidOverlap,
+            paperColor,
+            fogColor,
+            numPaperLayers,
+          },
+        },
+      },
       "*"
     );
   };
