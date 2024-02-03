@@ -38,10 +38,35 @@ figma.ui.onmessage = (msg) => {
       figma.notify("Select a single frame to generate a forest in.");
       return;
     }
-
     if (figma.currentPage.selection[0]?.type !== "FRAME") {
       figma.notify("Selected destination must be a Frame node.");
+      return;
     }
+
+    if (msg.forest.layeredPaperMode) {
+      const hexTestReg = /^#([0-9a-f]{3}){1,2}$/i;
+      if (!hexTestReg.test("#" + msg.forest.paperColor)) {
+        figma.notify("Invalid paper color: " + msg.forest.paperColor);
+        return;
+      }
+      if (!hexTestReg.test("#" + msg.forest.fogColor)) {
+        figma.notify("Invalid fog color: " + msg.forest.fogColor);
+        return;
+      }
+    }
+
+    //     avoidOverlap: true
+    // density: 50
+    // fogColor: "FFFFFF"
+    // layeredPaperMode: true
+    // numPaperLayers: 3
+    // paperColor: "44561F"
+    // perspectiveScaling: 50
+    // scalingRange:
+    // 	0: 1
+    // 	1: 1.2
+    // trees:
+    // 	53:613: "Frame 1000004504"
 
     // TODO: generate the forest!
   }
