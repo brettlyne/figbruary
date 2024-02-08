@@ -84,7 +84,7 @@ figma.ui.onmessage = (msg) => {
     const averageScaling = (minScale + maxScale) / 2;
     const maxTreeCount = Math.max(
       minTreeCount,
-      6 * Math.floor(frameArea / (treeArea * averageScaling))
+      2 * Math.floor(frameArea / (treeArea * averageScaling))
     );
     let treeCount = Math.floor(
       (forest.density / 100) * (maxTreeCount - minTreeCount) + minTreeCount
