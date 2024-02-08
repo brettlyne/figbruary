@@ -49,18 +49,6 @@ figma.ui.onmessage = (msg) => {
       return;
     }
 
-    if (forest.layeredPaperMode) {
-      const hexTestReg = /^#([0-9a-f]{3}){1,2}$/i;
-      if (!hexTestReg.test("#" + forest.paperColor)) {
-        figma.notify("Invalid paper color: " + forest.paperColor);
-        return;
-      }
-      if (!hexTestReg.test("#" + forest.fogColor)) {
-        figma.notify("Invalid fog color: " + forest.fogColor);
-        return;
-      }
-    }
-
     const nodes: TreeNode[] = [];
     for (const [key, value] of Object.entries(forest.trees)) {
       const node = figma.root.findOne((n) => n.id === key);
