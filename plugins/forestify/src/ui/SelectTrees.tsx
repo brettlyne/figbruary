@@ -9,9 +9,9 @@ const SelectTrees = ({ setAppState, trees, setTrees }) => {
           Forestify creates a forest from a set of trees.
         </p>
         <p style={{ marginTop: ".5rem" }}>
-          Or more generically, it distributes copies of nodes randomly inside a
-          selected Frame, with options to specify randomized scaling,
-          perspective scaling, density, and more.
+          Or more generically, it distributes copies of nodes inside a selected
+          Frame, with options to specify randomized scaling, perspective
+          scaling, density, and more.
         </p>
 
         <p className="input-label">selected trees</p>
