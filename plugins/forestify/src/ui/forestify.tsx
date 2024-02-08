@@ -22,7 +22,7 @@ const App = () => {
   const [scalingRange, setScalingRange] = React.useState<number[]>([0.8, 1.2]);
   const [density, setDensity] = React.useState(50);
   const [perspectiveScaling, setPerspectiveScaling] = React.useState(0);
-  const [reduceOverlap, setReduceOverlap] = React.useState(true);
+  const [distributionRandomness, setDistributionRandomness] = React.useState(9);
   const [paperColor, setPaperColor] = React.useState("44561F");
   const [fogColor, setFogColor] = React.useState("FFFFFF");
   const [numPaperLayers, setNumPaperLayers] = React.useState(3);
@@ -38,8 +38,8 @@ const App = () => {
     setDensity,
     perspectiveScaling,
     setPerspectiveScaling,
-    reduceOverlap,
-    setReduceOverlap,
+    distributionRandomness,
+    setDistributionRandomness,
     paperColor,
     setPaperColor,
     fogColor,
@@ -68,7 +68,7 @@ const App = () => {
             layeredPaperMode,
             density,
             perspectiveScaling,
-            reduceOverlap,
+            distributionRandomness,
             paperColor,
             fogColor,
             numPaperLayers,

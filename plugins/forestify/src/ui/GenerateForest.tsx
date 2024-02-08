@@ -129,19 +129,22 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
           </p>
         )}
 
-        <p style={{ marginBottom: "0" }}>
-          <Checkbox
-            checked={forest.reduceOverlap}
-            onChange={(event) => {
-              forest.setReduceOverlap(event.target.checked);
+        <p className="input-label">Distribution Randomness</p>
+        <div className="slider-container">
+          <Slider
+            size="small"
+            valueLabelDisplay="auto"
+            min={0}
+            max={10}
+            step={0.5}
+            value={forest.distributionRandomness}
+            onChange={(event, newValue) => {
+              console.log("newValue: ", newValue);
+              forest.setDistributionRandomness(newValue as number);
             }}
-            style={{ marginLeft: "-.75rem" }}
-            id="reduceOverlapCheck"
           />
-          <label htmlFor="reduceOverlapCheck">
-            reduce overlapping trees (takes longer)
-          </label>
-        </p>
+        </div>
+
         {/* 
         <p>
           <Checkbox
