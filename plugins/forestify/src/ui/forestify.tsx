@@ -19,7 +19,7 @@ const App = () => {
   const [appState, setAppState] = useState("adding-trees");
   const [trees, setTrees] = useState({});
   const [layeredPaperMode, setLayeredPaperMode] = React.useState(false);
-  const [scalingRange, setScalingRange] = React.useState<number[]>([1, 1.2]);
+  const [scalingRange, setScalingRange] = React.useState<number[]>([0.8, 1.2]);
   const [density, setDensity] = React.useState(50);
   const [perspectiveScaling, setPerspectiveScaling] = React.useState(0);
   const [reduceOverlap, setReduceOverlap] = React.useState(true);
