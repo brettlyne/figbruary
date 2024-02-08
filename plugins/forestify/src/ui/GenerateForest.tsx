@@ -76,38 +76,7 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
           />
         </div>
 
-        {forest.perspectiveScaling > 0 ? (
-          <>
-            <p className="input-label">
-              perspective scaling (distant trees are smaller)
-            </p>
-            <div className="slider-container">
-              <Slider
-                size="small"
-                value={forest.perspectiveScaling}
-                onChange={(event, newValue) => {
-                  forest.setPerspectiveScaling(newValue as number);
-                }}
-              />
-            </div>
-          </>
-        ) : (
-          <p style={{ marginBottom: "0" }}>
-            <Checkbox
-              defaultChecked={false}
-              onChange={() => {
-                forest.setPerspectiveScaling(75);
-              }}
-              style={{ marginLeft: "-.75rem" }}
-              id="perspectiveCheck"
-            />
-            <label htmlFor="perspectiveCheck">
-              perspective scaling (distant trees smaller)
-            </label>
-          </p>
-        )}
-
-        <p className="input-label">Distribution Randomness</p>
+        <p className="input-label">distribution randomness</p>
         <div className="slider-container">
           <Slider
             size="small"
@@ -118,6 +87,19 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
             value={forest.distributionRandomness}
             onChange={(event, newValue) => {
               forest.setDistributionRandomness(newValue as number);
+            }}
+          />
+        </div>
+
+        <p className="input-label">
+          perspective scaling (distant trees are smaller)
+        </p>
+        <div className="slider-container">
+          <Slider
+            size="small"
+            value={forest.perspectiveScaling}
+            onChange={(event, newValue) => {
+              forest.setPerspectiveScaling(newValue as number);
             }}
           />
         </div>
