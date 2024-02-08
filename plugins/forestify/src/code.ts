@@ -113,76 +113,19 @@ figma.ui.onmessage = (msg) => {
       const [minScale, maxScale] = forest.scalingRange;
       const scale = minScale + Math.random() * (maxScale - minScale);
       clone.resize(clone.width * scale, clone.height * scale);
+
       const x = Math.random() * frame.width - clone.width / 2;
       const y = 0.2 + Math.random() * 0.8 * frame.height - clone.height / 2;
       clone.x = x;
       clone.y = y;
+
       treeNodes.push(clone);
     }
 
     if (forest.reduceOverlap) {
-      const newNodes = [];
-      for (let i = 0; i < treeNodes.length; i++) {
-        const node = treeNodes[i];
-
-        // split the frame into a 3x3 grid and place the node in the least overlapped cell
-        // this is a compromise between performance and avoiding overlap
-        // I looked into some packing algorithms, but the results are very inorganic looking
-        const gridWidth = frame.width / 3;
-        const gridHeight = frame.height / 3;
-        const posWithinCell = {
-          x: Math.random() * gridWidth - node.width / 2,
-          y: Math.random() * gridHeight - node.height / 2,
-        };
-
-        // use a circle approximation of nodes for overlap avoidance
-        const r1 = (node.width + node.height) / 4;
-
-        const grid = Array(9).fill(0);
-        for (let j = 0; j < 9; j++) {
-          const row = Math.floor(j / 3);
-          const col = j % 3;
-          const dx = col * gridWidth + posWithinCell.x;
-          const dy = row * gridHeight + posWithinCell.y;
-
-          let overlap = 0;
-
-          for (let k = 0; k < newNodes.length; k++) {
-            const p2 = newNodes[k];
-            const r2 = (p2.width + p2.height) / 4;
-            const d = Math.abs(dx - p2.x) + Math.abs(dy - p2.y);
-            if (d < r1 + r2) {
-              overlap += r1 + r2 - d;
-            }
-          }
-          grid[j] = overlap;
-        }
-
-        // where the 3x3 grid is indexed as follows:
-        // 0 1 2
-        // 3 4 5
-        // 6 7 8
-        // let's try the cells in this order: 4,5,6,1,0,3,8,7,2 so it looks more natural if very few trees
-        const placementOrder = [4, 5, 6, 1, 0, 3, 8, 7, 2];
-        let minOverlap = Infinity;
-        let minIndex = 0;
-        for (let j = 0; j < placementOrder.length; j++) {
-          if (grid[placementOrder[j]] < minOverlap) {
-            minOverlap = grid[placementOrder[j]];
-            minIndex = placementOrder[j];
-          }
-        }
-
-        const row = Math.floor(minIndex / 3);
-        const col = minIndex % 3;
-        const dx = col * gridWidth + posWithinCell.x;
-        const dy = row * gridHeight + posWithinCell.y;
-
-        node.x = dx;
-        node.y = dy;
-
-        newNodes.push(node);
-      }
+      //   const newLocations = getRandomGrid(frame.width, frame.height, treeCount);
+      //   console.log("treeCount: ", treeCount);
+      //   console.log("newLocations: ", newLocations);
     }
 
     if (forest.perspectiveScaling > 1) {
