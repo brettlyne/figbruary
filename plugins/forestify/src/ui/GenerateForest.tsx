@@ -3,11 +3,6 @@ import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Slider from "@mui/material/Slider";
 import Checkbox from "@mui/material/Checkbox";
-// for paper mode, not yet implemented
-// import FormControl from "@mui/material/FormControl";
-// import InputLabel from "@mui/material/InputLabel";
-// import OutlinedInput from "@mui/material/OutlinedInput";
-// import InputAdornment from "@mui/material/InputAdornment";
 
 const scalingMarks = [
   {
@@ -144,68 +139,6 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
             }}
           />
         </div>
-
-        {/* 
-        <p>
-          <Checkbox
-            checked={forest.layeredPaperMode}
-            onChange={(event) => {
-              forest.setLayeredPaperMode(event.target.checked);
-            }}
-            style={{ marginLeft: "-.75rem" }}
-            id="paperCheck"
-          />
-          <label htmlFor="paperCheck">layered paper mode</label>
-        </p>
-
-        {forest.layeredPaperMode ? (
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <FormControl sx={{ width: "14ch", marginTop: ".5rem" }}>
-              <InputLabel htmlFor="color-1">paper color</InputLabel>
-              <OutlinedInput
-                id="color-1"
-                startAdornment={
-                  <InputAdornment position="start">#</InputAdornment>
-                }
-                label="paper color"
-                value={forest.paperColor}
-                onChange={(event) => {
-                  forest.setPaperColor(event.target.value);
-                }}
-              />
-            </FormControl>
-            <FormControl sx={{ width: "14ch", marginTop: ".5rem" }}>
-              <InputLabel htmlFor="color-2">fog color</InputLabel>
-              <OutlinedInput
-                id="color-2"
-                startAdornment={
-                  <InputAdornment position="start">#</InputAdornment>
-                }
-                label="fog color"
-                value={forest.fogColor}
-                onChange={(event) => {
-                  forest.setFogColor(event.target.value);
-                }}
-              />
-            </FormControl>
-            <FormControl sx={{ width: "8ch", marginTop: ".5rem" }}>
-              <InputLabel htmlFor="outlined-adornment-amount">
-                layers
-              </InputLabel>
-              <OutlinedInput
-                type="number"
-                id="outlined-adornment-amount"
-                label="layers"
-                value={forest.numPaperLayers}
-                onChange={(event) => {
-                  forest.setNumPaperLayers(
-                    Math.max(1, parseInt(event.target.value))
-                  );
-                }}
-              />
-            </FormControl>
-          </div>
-        ) : null} */}
       </div>
       <footer>
         <Button
