@@ -78,11 +78,13 @@ figma.ui.onmessage = (msg) => {
     targetFrame = figma.currentPage.selection[0];
     const frameArea = getNodeArea(targetFrame);
     const treeArea = nodes.reduce((acc, node) => acc + getNodeArea(node), 0);
+    const [minScale, maxScale] = forest.scalingRange;
 
     const minTreeCount = Object.keys(forest.trees).length;
+    const averageScaling = (minScale + maxScale) / 2;
     const maxTreeCount = Math.max(
       minTreeCount,
-      6 * Math.floor(frameArea / treeArea)
+      6 * Math.floor(frameArea / (treeArea * averageScaling))
     );
     let treeCount = Math.floor(
       (forest.density / 100) * (maxTreeCount - minTreeCount) + minTreeCount
@@ -96,14 +98,12 @@ figma.ui.onmessage = (msg) => {
     treeNodes = [];
     for (let i = 0; i < treeCount; i++) {
       const node = nodes[Math.floor(Math.random() * nodes.length)];
-      // const clone = node.clone();
       let clone;
       if (node.type === "COMPONENT") {
         clone = node.createInstance();
       } else {
         clone = node.clone();
       }
-      const [minScale, maxScale] = forest.scalingRange;
       const scale = minScale + Math.random() * (maxScale - minScale);
       clone.resize(clone.width * scale, clone.height * scale);
 
