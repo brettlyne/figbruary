@@ -45,23 +45,6 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
           back to selecting trees
         </Button>
 
-        {/* <ToggleButtonGroup
-          style={{ marginTop: "1rem", marginBottom: ".25rem" }}
-          value={mode}
-          color="primary"
-          exclusive
-          onChange={(event, newMode) => {
-            if (newMode) {
-              setMode(newMode as string);
-            }
-          }}
-          aria-label="Mode"
-          size="small"
-        >
-          <ToggleButton value="normal">normal</ToggleButton>
-          <ToggleButton value="layered">layered</ToggleButton>
-        </ToggleButtonGroup> */}
-
         <p className="input-label">
           min/max random scaling ({forest.scalingRange[0]}x to{" "}
           {forest.scalingRange[1]}x)
@@ -134,7 +117,6 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
             step={0.5}
             value={forest.distributionRandomness}
             onChange={(event, newValue) => {
-              console.log("newValue: ", newValue);
               forest.setDistributionRandomness(newValue as number);
             }}
           />
