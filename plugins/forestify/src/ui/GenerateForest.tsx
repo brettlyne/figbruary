@@ -3,10 +3,11 @@ import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Slider from "@mui/material/Slider";
 import Checkbox from "@mui/material/Checkbox";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputAdornment from "@mui/material/InputAdornment";
+// for paper mode, not yet implemented
+// import FormControl from "@mui/material/FormControl";
+// import InputLabel from "@mui/material/InputLabel";
+// import OutlinedInput from "@mui/material/OutlinedInput";
+// import InputAdornment from "@mui/material/InputAdornment";
 
 const scalingMarks = [
   {
@@ -141,7 +142,7 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
             reduce overlapping trees (takes longer)
           </label>
         </p>
-
+        {/* 
         <p>
           <Checkbox
             checked={forest.layeredPaperMode}
@@ -201,7 +202,7 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
               />
             </FormControl>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
       <footer>
         <Button
