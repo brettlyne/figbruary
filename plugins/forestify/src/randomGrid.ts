@@ -11,10 +11,10 @@ const getRandomGrid = (
   amount = 200,
   relax = 4
 ) => {
-  const rnd = Math.random();
   const start: Point[] = new Array(amount)
     .fill(0)
-    .map(() => [rnd * width, rnd * height]);
+    .map(() => [Math.random() * width, Math.random() * height]);
+
   const delaunay = Delaunay.from(start);
   const voronoi = delaunay.voronoi([0, 0, width, height]);
   const points = [];

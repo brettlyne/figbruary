@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { cyan, orange } from "@mui/material/colors";
+import { green, orange } from "@mui/material/colors";
+
+import randomGrid from "../randomGrid";
+import "./index.css";
 
 import SelectTrees from "./SelectTrees";
 import GenerateForest from "./GenerateForest";
 
 const theme = createTheme({
   palette: {
-    primary: cyan,
+    primary: green,
     secondary: orange,
   },
 });

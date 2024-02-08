@@ -2,7 +2,6 @@ import React from "react";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Slider from "@mui/material/Slider";
-import Checkbox from "@mui/material/Checkbox";
 
 const scalingMarks = [
   {
@@ -83,7 +82,7 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
             valueLabelDisplay="auto"
             min={0}
             max={10}
-            step={0.5}
+            step={1}
             value={forest.distributionRandomness}
             onChange={(event, newValue) => {
               forest.setDistributionRandomness(newValue as number);
@@ -103,7 +102,19 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
             }}
           />
         </div>
+
+        <div className="info">
+          <p>Forests will take a while to grow when:</p>
+          <ul>
+            <li>target frame is large</li>
+            <li>trees are small</li>
+            <li>density is high</li>
+            <li>perspective scaling is high</li>
+            <li>randomness is low</li>
+          </ul>
+        </div>
       </div>
+
       <footer>
         <Button
           size="small"

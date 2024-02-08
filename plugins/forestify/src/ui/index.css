@@ -70,6 +70,17 @@ code {
   overflow: scroll;
 }
 
+.info {
+  font-size: 0.8rem;
+  padding: 0.25rem;
+  margin-top: 0.5rem;
+  color: #666;
+}
+.info ul {
+  list-style: disc;
+  margin-left: 0.75rem;
+}
+
 p {
   margin-bottom: 0.25rem;
 }
