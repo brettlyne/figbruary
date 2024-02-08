@@ -52,10 +52,24 @@ const App = () => {
 
   onmessage = (event) => {
     const message = JSON.parse(event.data.pluginMessage);
-    console.log("message:", message);
 
     if (message.msgType === "add-these-trees") {
       setTrees({ ...trees, ...message.trees });
+    }
+
+    // doing this in UI bc d3 doesn't work in figma code environment
+    if (message.msgType === "calculate-tree-locations") {
+      const { treeCount, width, height } = message;
+      const locations = randomGrid(
+        width,
+        height,
+        treeCount,
+        10 - distributionRandomness
+      );
+      parent.postMessage(
+        { pluginMessage: { type: "use-these-locations", locations } },
+        "*"
+      );
     }
   };
 
