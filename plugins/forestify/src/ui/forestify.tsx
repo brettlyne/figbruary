@@ -17,11 +17,7 @@ const theme = createTheme({
 
 const App = () => {
   const [appState, setAppState] = useState("adding-trees");
-  // const [trees, setTrees] = useState({});
-  const [trees, setTrees] = useState({
-    "45:264": "Component 1",
-    "53:542": "Component 16",
-  });
+  const [trees, setTrees] = useState({});
   const [layeredPaperMode, setLayeredPaperMode] = React.useState(false);
   const [scalingRange, setScalingRange] = React.useState<number[]>([1, 1.2]);
   const [density, setDensity] = React.useState(50);
