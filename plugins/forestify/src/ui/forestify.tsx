@@ -22,7 +22,7 @@ const App = () => {
   const [trees, setTrees] = useState({});
   const [layeredPaperMode, setLayeredPaperMode] = React.useState(false);
   const [scalingRange, setScalingRange] = React.useState<number[]>([0.8, 1.2]);
-  const [density, setDensity] = React.useState(25);
+  const [density, setDensity] = React.useState(10);
   const [perspectiveScaling, setPerspectiveScaling] = React.useState(0);
   const [distributionRandomness, setDistributionRandomness] = React.useState(9);
   const [paperColor, setPaperColor] = React.useState("44561F");
