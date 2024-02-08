@@ -17,12 +17,16 @@ const theme = createTheme({
 
 const App = () => {
   const [appState, setAppState] = useState("adding-trees");
-  const [trees, setTrees] = useState({});
+  // const [trees, setTrees] = useState({});
+  const [trees, setTrees] = useState({
+    "45:264": "Component 1",
+    "53:542": "Component 16",
+  });
   const [layeredPaperMode, setLayeredPaperMode] = React.useState(false);
   const [scalingRange, setScalingRange] = React.useState<number[]>([1, 1.2]);
   const [density, setDensity] = React.useState(50);
-  const [perspectiveScaling, setPerspectiveScaling] = React.useState(50);
-  const [avoidOverlap, setAvoidOverlap] = React.useState(true);
+  const [perspectiveScaling, setPerspectiveScaling] = React.useState(0);
+  const [reduceOverlap, setReduceOverlap] = React.useState(true);
   const [paperColor, setPaperColor] = React.useState("44561F");
   const [fogColor, setFogColor] = React.useState("FFFFFF");
   const [numPaperLayers, setNumPaperLayers] = React.useState(3);
@@ -38,8 +42,8 @@ const App = () => {
     setDensity,
     perspectiveScaling,
     setPerspectiveScaling,
-    avoidOverlap,
-    setAvoidOverlap,
+    reduceOverlap,
+    setReduceOverlap,
     paperColor,
     setPaperColor,
     fogColor,
@@ -58,8 +62,6 @@ const App = () => {
   };
 
   const generateForest = () => {
-    // TODO: pass all forest settings to the plugin
-
     parent.postMessage(
       {
         pluginMessage: {
@@ -70,7 +72,7 @@ const App = () => {
             layeredPaperMode,
             density,
             perspectiveScaling,
-            avoidOverlap,
+            reduceOverlap,
             paperColor,
             fogColor,
             numPaperLayers,

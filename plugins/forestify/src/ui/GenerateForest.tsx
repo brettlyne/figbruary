@@ -99,29 +99,49 @@ const GenerateForest = ({ setAppState, forest, generateForest }) => {
           />
         </div>
 
-        <p className="input-label">
-          perspective scaling (distant trees are smaller)
-        </p>
-        <div className="slider-container">
-          <Slider
-            size="small"
-            value={forest.perspectiveScaling}
-            onChange={(event, newValue) => {
-              forest.setPerspectiveScaling(newValue as number);
-            }}
-          />
-        </div>
+        {forest.perspectiveScaling > 0 ? (
+          <>
+            <p className="input-label">
+              perspective scaling (distant trees are smaller)
+            </p>
+            <div className="slider-container">
+              <Slider
+                size="small"
+                value={forest.perspectiveScaling}
+                onChange={(event, newValue) => {
+                  forest.setPerspectiveScaling(newValue as number);
+                }}
+              />
+            </div>
+          </>
+        ) : (
+          <p style={{ marginBottom: "0" }}>
+            <Checkbox
+              defaultChecked={false}
+              onChange={() => {
+                forest.setPerspectiveScaling(75);
+              }}
+              style={{ marginLeft: "-.75rem" }}
+              id="perspectiveCheck"
+            />
+            <label htmlFor="perspectiveCheck">
+              perspective scaling (distant trees smaller)
+            </label>
+          </p>
+        )}
 
         <p style={{ marginBottom: "0" }}>
           <Checkbox
-            checked={forest.avoidOverlap}
+            checked={forest.reduceOverlap}
             onChange={(event) => {
-              forest.setAvoidOverlap(event.target.checked);
+              forest.setReduceOverlap(event.target.checked);
             }}
             style={{ marginLeft: "-.75rem" }}
-            id="avoidOverlapCheck"
+            id="reduceOverlapCheck"
           />
-          <label htmlFor="avoidOverlapCheck">avoid overlapping trees</label>
+          <label htmlFor="reduceOverlapCheck">
+            reduce overlapping trees (takes longer)
+          </label>
         </p>
 
         <p>
