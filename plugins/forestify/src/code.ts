@@ -12,7 +12,7 @@ type TreeNode =
   | TextNode
   | VectorNode;
 
-figma.showUI(__html__, { width: 320, height: 500 });
+figma.showUI(__html__, { width: 320, height: 420 });
 
 const getNodeArea = (node: any) => {
   return node.absoluteBoundingBox.width * node.absoluteBoundingBox.height;
