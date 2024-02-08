@@ -1,27 +1,20 @@
 import { Delaunay } from "d3-delaunay";
 import { polygonCentroid } from "d3-polygon";
 
+type Point = [number, number];
 // Below adapted from: https://observablehq.com/@dmitrybaranovskiy/random-grid
-
-const almostRandom =
-  (seed = 42) =>
-  () => {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280;
-  };
 
 // Hat tip to https://georgefrancis.dev/writing/crafting-organic-patterns-with-voronoi-tessellations/
 const getRandomGrid = (
   width = 1000,
   height = 1000,
   amount = 200,
-  rndseed = 1984,
   relax = 4
 ) => {
-  const rnd = almostRandom(rndseed);
-  const start = new Array(amount)
+  const rnd = Math.random();
+  const start: Point[] = new Array(amount)
     .fill(0)
-    .map(() => [rnd() * width, rnd() * height]);
+    .map(() => [rnd * width, rnd * height]);
   const delaunay = Delaunay.from(start);
   const voronoi = delaunay.voronoi([0, 0, width, height]);
   const points = [];
@@ -33,8 +26,8 @@ const getRandomGrid = (
       if (cell === null) continue;
       const [x1, y1] = polygonCentroid(cell);
 
-      delaunay.points[i] = x1;
-      delaunay.points[i + 1] = y1;
+      (delaunay.points as number[])[i] = x1;
+      (delaunay.points as number[])[i + 1] = y1;
     }
 
     voronoi.update();
